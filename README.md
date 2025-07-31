@@ -2,6 +2,6 @@ This repository contains the R-scripts that were used to generate the results pr
 
 R_scripts: Contains all R-scripts used for the statistical analyses
 
-Figure_scripts: Contrains all R-scripts used to generate the figures and some of the tables of the publication.  
+Figure_scripts: Contains all R-scripts used to generate the figures and some of the tables of the publication.  
 
 Results: The full list of significant protein group associations with the CTG-repeat and 6MWT scores, as well as the table containing all Variable Inclusion Probabilities, will be made available on GitHub after publication. 
