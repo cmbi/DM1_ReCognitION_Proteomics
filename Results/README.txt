@@ -1,0 +1,1 @@
+The full list of significant protein group associations with the CTG-repeat and 6MWT scores, as well as the table containing all Variable Inclusion Probabilities, will be made available on GitHub after publication.
