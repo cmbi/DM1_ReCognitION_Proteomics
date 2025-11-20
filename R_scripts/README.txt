@@ -1,9 +1,9 @@
 
-## ReCognitION proteomics analyses are based on the DIA_pooled_DIA_NN datasets: Z:/Raw_data/DIA_Proteomic_Gent/New analysis/DIA_pooled_DIA_NN/
-## Phenotype data is based on the OPTIMISTIC study: Z:/Documents/OPTIMISTIC_Phenotype_Data.xlsx
-## External proteomics data: Z:/Raw_data/Radboudumc/Canada_complement_assay/20240320_MBRon_DM1_study_nosamplegroups_NoNorm/processing-run/b0fdd4b6-f2b4-4fb2-9d75-5ced239d546d/summary-results.proteinpgmaxlfq.parquet
-## External ELISA based results of ITIH3: Z:/Raw_data/ITIH3_Canda_Essen/20231024_ITIH3_ DM1_individual values.xlsx
-## External phenotype data: Z:/Raw_data/ITIH3_Canda_Essen/Clinical_data_canada/Phenotype_ITIH3_DM1total.xlsx
+## ReCognitION proteomics analyses are based on the DIA_pooled_DIA_NN datasets: DIA_pooled_DIA_NN
+## Phenotype data is based on the OPTIMISTIC study: OPTIMISTIC_Phenotype_Data.xlsx
+## External proteomics data: summary-results.proteinpgmaxlfq.parquet
+## External ELISA based results of ITIH3: 20231024_ITIH3_ DM1_individual values.xlsx
+## External phenotype data: Phenotype_ITIH3_DM1total.xlsx
 
 ## Scripts should be run in the order as shown below (so that generated datasets can be used in the next script).
 
