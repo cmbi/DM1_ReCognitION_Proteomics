@@ -1,7 +1,7 @@
 
 
 ## Script generated on 19/8/22 by D. van As
-## Last updates applied on: 10/03/25
+## Last updates applied on: 18/11/25: phenotype data contains multiple tabs now; updated for easy reproduciblity 
 ## Purpose: Calculate combined scores, filter out certain non-continuous outcomes, remove outliers
 
 
@@ -32,10 +32,14 @@ IQR_filter <- function(x, n){
 ## Load relevant datasets##
 ###########################
 
-## Clinical trial data
-pdf <- read_excel("Outcome measures overview (V5)_corrected.xlsx", sheet=1)
-pdf <- as.data.frame(pdf)
-rownames(pdf) <- pdf$PatientID...1
+## Clinical trial data 
+dfa <- read_excel("OPTIMISTIC_Phenotype_Data.xlsx", sheet=1)
+dfb <- read_excel("OPTIMISTIC_Phenotype_Data.xlsx", sheet=2)
+dfc <- read_excel("OPTIMISTIC_Phenotype_Data.xlsx", sheet=3)
+dfd <- read_excel("OPTIMISTIC_Phenotype_Data.xlsx", sheet=4)
+dfe <- read_excel("OPTIMISTIC_Phenotype_Data.xlsx", sheet=5)
+pdf <- cbind(dfa, dfb, dfc, dfd, dfe)
+rownames(pdf) <- pdf$PatientID
 
 
 ######################################
@@ -57,8 +61,8 @@ pdf$TMTV4 <- pdf$TMTBV4 / pdf$TMTAV4
 ## Check & correct graded-exercise therapy versus intervention group
 # Patients of the control group did not receive graded exercise therapy
 table(pdf$GradedExerciseTherapy[pdf$TreatmentCode==0])
-pdf$PatientID...1[pdf$TreatmentCode==0 & pdf$GradedExerciseTherapy==1]          #C024P
-pdf$GradedExerciseTherapy[pdf$PatientID...1 == "C024P"] <- 0
+pdf$PatientID[pdf$TreatmentCode==0 & pdf$GradedExerciseTherapy==1]              #C024P
+pdf$GradedExerciseTherapy[pdf$PatientID == "C024P"] <- 0
 
 
 ######################################################
@@ -148,6 +152,5 @@ pdf <- cdf
 
 save(pdf, 
      file= "Filtered_Phenotypedata.RData")
-
 
 
