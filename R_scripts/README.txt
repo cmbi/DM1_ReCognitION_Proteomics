@@ -1,4 +1,10 @@
 
+## ReCognitION proteomics analyses are based on the DIA_pooled_DIA_NN datasets: Z:/Raw_data/DIA_Proteomic_Gent/New analysis/DIA_pooled_DIA_NN/
+## Phenotype data is based on the OPTIMISTIC study: Z:/Documents/OPTIMISTIC_Phenotype_Data.xlsx
+## External proteomics data: Z:/Raw_data/Radboudumc/Canada_complement_assay/20240320_MBRon_DM1_study_nosamplegroups_NoNorm/processing-run/b0fdd4b6-f2b4-4fb2-9d75-5ced239d546d/summary-results.proteinpgmaxlfq.parquet
+## External ELISA based results of ITIH3: Z:/Raw_data/ITIH3_Canda_Essen/20231024_ITIH3_ DM1_individual values.xlsx
+## External phenotype data: Z:/Raw_data/ITIH3_Canda_Essen/Clinical_data_canada/Phenotype_ITIH3_DM1total.xlsx
+
 ## Scripts should be run in the order as shown below (so that generated datasets can be used in the next script).
 
 ##############################################
@@ -7,7 +13,7 @@
 
 ## Filtering of phenotype data 
 Script: Phenotype_filter.R
-Input: Outcome measures overview (V5)_corrected.xlsx
+Input: OPTIMISTIC_Phenotype_Data.xlsx
 Output: Philtered_Phenotypedata.RDATA
 
 ## Pre-processing of peptide data 
@@ -36,8 +42,6 @@ Output: ext_val_normalized_proteins_no_minimum.RDATA
 ## Statistical analyses ##
 ##########################
 
-## All .csv files will be available on GitHub after publication of the manuscript
-
 ## Statistical analysis of the protein data with mixed effect models 
 Script: Protein_statistics_p_DIA-NN.R
 Input: normalized_protein_intensities_p_DIA_NN.RDATA 
@@ -51,4 +55,9 @@ Output: all_p_ext_val_res.RDATA, ext_val_CTG_hits.csv, ext_val_SMWT_hits_sig.csv
 ## Bootstrap enhanced multivariate Elastic-Net modeling of CTG repeat and SMWT, including external validation | 
 Script: Multivariate_Elastic_Net_p_DIA_NN.R
 Input: all_p_ext_val_res.RDATA, normalized_protein_intensities_p_DIA_NN.RDATA, DIA-NN_p_Protein_statistics.RDATA
-Output: p_DIA_NN_CTG&SMWT_prot_VIPs.RDATA, CTG&SMWT_MVpred_VIPs.csv
+Output: p_DIA_NN_CTG&SMWT_prot_VIPs.RDATA
+
+## Mediation analysis studying the impact of BMI on validated biomarkers associated with CTG-repeat and 6MWT
+# Needs table 2 in addition to datasets generated above
+Script: BMI_Complement_Mediation
+Input: DIA-NN_p_Protein_statistics.RDATA, Table2.RDATA, OPTIMISTIC_Phenotype_Data.xlsx
